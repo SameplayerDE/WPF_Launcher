@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
@@ -37,6 +39,43 @@ namespace WpfApp2
             // ReSharper disable once HeapView.DelegateAllocation
             timer.Tick += CheckInternetConnection;
             timer.Start();
+            
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.DoWork += worker_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+
+            worker.RunWorkerAsync();
+            
+        }
+        
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for(int i = 0; i <= 100; i++)
+            {
+                (sender as BackgroundWorker).ReportProgress(i);
+                Thread.Sleep(50);
+            }
+        }
+
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            ProgressBar.Value = e.ProgressPercentage;
+            if (ProgressBar.Value < 100)
+            {
+                var style = FindResource("ButtonDefaultDisabled") as Style;
+                StartButton.Style = style;
+            }
+            else
+            {
+                var style = FindResource("ButtonDefaultEnabled") as Style;
+                StartButton.Style = style;
+                if (!LauncherHandler.Instance.VerifyFiles())
+                {
+                    Error.Text = "files are corrupted";
+                    Error.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         private void CheckInternetConnection(object? sender, EventArgs e)

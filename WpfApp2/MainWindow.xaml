@@ -13,125 +13,12 @@
 
     <Window.Resources>
 
-        <Style x:Key="Fancy" TargetType="Button">
-            <Setter Property="Background" Value="Orange" />
-            <Setter Property="Foreground" Value="#582C13" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Monospaced" />
-            <Setter Property="FontStyle" Value="Normal" />
-            <Setter Property="Padding" Value="50 10" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFBE00" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="DefaultButton" TargetType="Button">
-            <Setter Property="Background" Value="Orange" />
-            <Setter Property="Foreground" Value="#582C13" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Monospaced" />
-            <Setter Property="FontStyle" Value="Normal" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFBE00" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="StartButton" TargetType="Button">
-            <Setter Property="Background" Value="Orange" />
-            <Setter Property="Foreground" Value="#582C13" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Monospaced" />
-            <Setter Property="FontStyle" Value="Normal" />
-            <Setter Property="Padding" Value="50 10" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFBE00" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="UpButton" TargetType="Button">
-            <Setter Property="Background" Value="Orange" />
-            <Setter Property="Foreground" Value="#582C13" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Monospaced" />
-            <Setter Property="FontStyle" Value="Normal" />
-            <Setter Property="Padding" Value="5 10" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FFBE00" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="Close" TargetType="Button">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Monospaced" />
-            <Setter Property="FontStyle" Value="Normal" />
-            <Setter Property="Padding" Value=" 5, 5" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
-                                              Margin="{TemplateBinding Padding}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="Red" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
     </Window.Resources>
     <DockPanel>
         <Grid DockPanel.Dock="Top" MouseDown="UIElement_OnMouseDown">
@@ -155,11 +42,11 @@
         </Grid>
         <Grid>
             <StackPanel>
-                <uc:NotificationMessage x:Name="InternetError">
+                <uc:NotificationMessage x:Name="InternetError" Visibility="Collapsed">
                     <uc:NotificationMessage.IconPath>assets/error.png</uc:NotificationMessage.IconPath>
                     <uc:NotificationMessage.Text>could not connect to server</uc:NotificationMessage.Text>
                 </uc:NotificationMessage>
-                <uc:NotificationMessage x:Name="Error">
+                <uc:NotificationMessage x:Name="Error" Visibility="Collapsed">
                     <uc:NotificationMessage.IconPath>assets/error.png</uc:NotificationMessage.IconPath>
                     <uc:NotificationMessage.Text>files are corrupted</uc:NotificationMessage.Text>
                 </uc:NotificationMessage>
@@ -193,12 +80,12 @@
                         <StackPanel.FlowDirection>RightToLeft</StackPanel.FlowDirection>
                         <StackPanel.Orientation>Horizontal</StackPanel.Orientation>
 
-                        <Button Style="{StaticResource StartButton}" Click="Start_OnClick">
+                        <Button Name="StartButton" Style="{StaticResource ButtonDefaultEnabled}" Click="Start_OnClick">
                             <Button.Content>Spiel starten</Button.Content>
                             <Button.Padding>10</Button.Padding>
-
                         </Button>
-                        <Button Style="{StaticResource UpButton}" Click="Up_OnClick">
+                        <Button Style="{StaticResource ButtonDefaultEnabled}" Click="Up_OnClick">
+                            <Button.Padding>5, 10</Button.Padding>
                             <Button.Content>
                                 <Image>
                                     <Image.Source>assets/carret_up.png</Image.Source>
@@ -207,6 +94,8 @@
                         </Button>
                     </StackPanel>
                 </Grid>
+                
+                <ProgressBar Name="ProgressBar" Minimum="0" Maximum="100" Value="0" Foreground="Orange" BorderThickness="0" Height="2" Background="BlanchedAlmond" />
             </StackPanel>
         </Grid>
     </DockPanel>
