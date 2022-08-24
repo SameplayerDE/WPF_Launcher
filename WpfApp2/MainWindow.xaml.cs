@@ -45,7 +45,7 @@ namespace WpfApp2
             {
                 ErrorMessage.Text = DateTime.Now.ToString("hh:mm:ss t z");   
             });*/
-            ErrorMessage.Visibility = InternetAvailability.IsInternetAvailable() ? Visibility.Hidden : Visibility.Visible;
+            InternetError.Visibility = InternetAvailability.IsInternetAvailable() ? Visibility.Collapsed : Visibility.Visible;
         }
 
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
@@ -63,7 +63,16 @@ namespace WpfApp2
 
         private void Start_OnClick(object sender, RoutedEventArgs e)
         {
-            LauncherHandler.Instance.TryStart();
+            try
+            {
+                LauncherHandler.Instance.TryStart();
+                Error.Visibility = Visibility.Collapsed;
+            }
+            catch
+            {
+                Error.Text = "files are corrupted";
+                Error.Visibility = Visibility.Visible;
+            }
         }
 
         private void Up_OnClick(object sender, RoutedEventArgs e)

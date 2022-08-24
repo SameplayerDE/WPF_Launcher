@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -11,7 +12,7 @@ namespace WpfApp2
     {
         public static LauncherHandler Instance { get; } = new LauncherHandler();
         private LauncherApplicationInformation _launcherApplicationInformation;
-        private static readonly string _hash = "ec7ee762b28eda6156a43eee968958d4bdef1564fefc9e5f3e50e4dff0ed8f80";
+        private const string Hash = "ec7ee762b28eda6156a43eee968958d4bdef1564fefc9e5f3e50e4dff0ed8f80";
 
         static LauncherHandler()
         {
@@ -32,12 +33,15 @@ namespace WpfApp2
         public void StartUp()
         {
             //Nothing
+            
         }
 
         public void TryStart()
         {
             if (VerifyFiles())
             {
+                //Start Game
+                Process.Start("C:/Program Files/Mozilla Firefox/firefox.exe");
                 Application.Current.Shutdown();
                 return;
             }
@@ -72,9 +76,9 @@ namespace WpfApp2
             return result;
         }
 
-        private bool VerifyFiles()
+        public bool VerifyFiles()
         {
-            return CompareByteArrays(ComputeHash("test.txt"), StringToByteArray(_hash));
+            return CompareByteArrays(ComputeHash("test.txt"), StringToByteArray(Hash));
         }
 
         private byte[] ComputeHash(string path)

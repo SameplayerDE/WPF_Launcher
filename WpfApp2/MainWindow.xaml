@@ -3,196 +3,212 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:WpfApp2"
         xmlns:local="clr-namespace:WpfApp2"
         mc:Ignorable="d"
         Title="" Height="450" Width="800">
-        <Window.ResizeMode>NoResize</Window.ResizeMode>
-        <Window.WindowStyle>None</Window.WindowStyle>
-        <Window.Background>BlanchedAlmond</Window.Background>
-        <Window.Resources>
-                
-                <Style x:Key="Fancy" TargetType="Button">
-                        <Setter Property="Background" Value="Orange"/>
-                        <Setter Property="Foreground" Value="#582C13"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontFamily" Value="Monospaced"/>
-                        <Setter Property="FontStyle" Value="Normal"/>
-                        <Setter Property="Padding" Value="50 10"/>
-                        <Setter Property="Template">
-                                <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="5">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
-                                                </Border>
-                                        </ControlTemplate>
-                                </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFBE00"/>
-                                </Trigger>
-                        </Style.Triggers>
-                </Style>
-                
-                <Style x:Key="DefaultButton" TargetType="Button">
-                        <Setter Property="Background" Value="Orange"/>
-                        <Setter Property="Foreground" Value="#582C13"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontFamily" Value="Monospaced"/>
-                        <Setter Property="FontStyle" Value="Normal"/>
-                        <Setter Property="Template">
-                                <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                        </ControlTemplate>
-                                </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFBE00"/>
-                                </Trigger>
-                        </Style.Triggers>
-                </Style>
-                
-                <Style x:Key="StartButton" TargetType="Button">
-                        <Setter Property="Background" Value="Orange"/>
-                        <Setter Property="Foreground" Value="#582C13"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontFamily" Value="Monospaced"/>
-                        <Setter Property="FontStyle" Value="Normal"/>
-                        <Setter Property="Padding" Value="50 10"/>
-                        <Setter Property="Template">
-                                <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
-                                                </Border>
-                                        </ControlTemplate>
-                                </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFBE00"/>
-                                </Trigger>
-                        </Style.Triggers>
-                </Style>
-                
-                <Style x:Key="UpButton" TargetType="Button">
-                        <Setter Property="Background" Value="Orange"/>
-                        <Setter Property="Foreground" Value="#582C13"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontFamily" Value="Monospaced"/>
-                        <Setter Property="FontStyle" Value="Normal"/>
-                        <Setter Property="Padding" Value="5 10"/>
-                        <Setter Property="Template">
-                                <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
-                                                </Border>
-                                        </ControlTemplate>
-                                </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#FFBE00"/>
-                                </Trigger>
-                        </Style.Triggers>
-                </Style>
-                
-                <Style x:Key="Close" TargetType="Button">
-                        <Setter Property="Background" Value="Black"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontSize" Value="20"/>
-                        <Setter Property="FontFamily" Value="Monospaced"/>
-                        <Setter Property="FontStyle" Value="Normal"/>
-                        <Setter Property="Padding" Value=" 10, 5"/>
-                        <Setter Property="Template">
-                                <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}">
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
-                                                </Border>
-                                        </ControlTemplate>
-                                </Setter.Value>
-                        </Setter>
-                        
-                        <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="DarkRed"/>
-                                </Trigger>
-                        </Style.Triggers>
-                </Style>
-                
-        </Window.Resources>
-        <DockPanel>
-                <Grid DockPanel.Dock="Top" MouseDown="UIElement_OnMouseDown">
-                        <Grid.ColumnDefinitions>			
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Rectangle >
-                                <Rectangle.Fill>Black</Rectangle.Fill>
-                        </Rectangle>
-                        <TextBlock Grid.Column="0" Name="Title" VerticalAlignment="Center" Foreground="White">
-                        </TextBlock>
-                        <Button Click="Close_OnClick" Grid.Column="1" Style="{StaticResource Close}">
-                                <Button.Content>X</Button.Content>
-                        </Button>
-                </Grid>
-                <Grid>
-                                                   
-                        <TextBlock Visibility="Hidden" Name="ErrorMessage">Could not connect to the server</TextBlock>
+    <Window.ResizeMode>NoResize</Window.ResizeMode>
+    <Window.WindowStyle>None</Window.WindowStyle>
+    <Window.Background>BlanchedAlmond</Window.Background>
 
-                        <StackPanel>
-                        <StackPanel.Background>Transparent</StackPanel.Background>
-                        <StackPanel.VerticalAlignment>Bottom</StackPanel.VerticalAlignment>
-                        <StackPanel.Orientation>Vertical</StackPanel.Orientation>
-                                <Grid Margin="10">
-                                <Grid.ColumnDefinitions>			
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                </Grid.RowDefinitions>
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                                        <StackPanel.FlowDirection>RightToLeft</StackPanel.FlowDirection>
-                                        <StackPanel.Orientation>Vertical</StackPanel.Orientation>
-                                        <TextBlock>
-                                                <TextBlock.Foreground>#B4A087</TextBlock.Foreground>
-                                                Version
-                                        </TextBlock>
-                                        <TextBlock>
-                                                <TextBlock.Foreground>#B4A087</TextBlock.Foreground>
-                                                0.0.0
-                                        </TextBlock>
-                                </StackPanel>
-                                <StackPanel Grid.Column="0">
-                                        <StackPanel.FlowDirection>RightToLeft</StackPanel.FlowDirection>
-                                        <StackPanel.Orientation>Horizontal</StackPanel.Orientation>
-             
-                                        <Button Style="{StaticResource StartButton}" Click="Start_OnClick">
-                                                <Button.Content>Spiel starten</Button.Content>
-                                                <Button.Padding>10</Button.Padding>
-                                                
-                                        </Button>
-                                        <Button Style="{StaticResource UpButton}" Click="Up_OnClick">
-                                                <Button.Content>
-                                                        <Image>
-                                                                <Image.Source>assets/carret_up.png</Image.Source>
-                                                        </Image>
-                                                </Button.Content>
-                                        </Button>
-                                </StackPanel>
-                        </Grid>
-                </StackPanel>
+    <Window.Resources>
+
+        <Style x:Key="Fancy" TargetType="Button">
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="Foreground" Value="#582C13" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Monospaced" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Padding" Value="50 10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5" BorderThickness="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFBE00" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="DefaultButton" TargetType="Button">
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="Foreground" Value="#582C13" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Monospaced" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFBE00" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="StartButton" TargetType="Button">
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="Foreground" Value="#582C13" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Monospaced" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Padding" Value="50 10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFBE00" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="UpButton" TargetType="Button">
+            <Setter Property="Background" Value="Orange" />
+            <Setter Property="Foreground" Value="#582C13" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Monospaced" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Padding" Value="5 10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="0" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FFBE00" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Close" TargetType="Button">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Monospaced" />
+            <Setter Property="FontStyle" Value="Normal" />
+            <Setter Property="Padding" Value=" 5, 5" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Margin="{TemplateBinding Padding}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" MouseDown="UIElement_OnMouseDown">
+            <Grid.Background>Black</Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Name="Title" VerticalAlignment="Center" Foreground="White">
+            </TextBlock>
+            <Button Click="Close_OnClick" Grid.Column="1" Style="{StaticResource Close}">
+                <Button.Content>
+                    <Image>
+                        <Image.Source>assets/x_white.png</Image.Source>
+                    </Image>
+                </Button.Content>
+            </Button>
         </Grid>
-        </DockPanel>
-        
+        <Grid>
+            <StackPanel>
+                <uc:NotificationMessage x:Name="InternetError">
+                    <uc:NotificationMessage.IconPath>assets/error.png</uc:NotificationMessage.IconPath>
+                    <uc:NotificationMessage.Text>could not connect to server</uc:NotificationMessage.Text>
+                </uc:NotificationMessage>
+                <uc:NotificationMessage x:Name="Error">
+                    <uc:NotificationMessage.IconPath>assets/error.png</uc:NotificationMessage.IconPath>
+                    <uc:NotificationMessage.Text>files are corrupted</uc:NotificationMessage.Text>
+                </uc:NotificationMessage>
+            </StackPanel>
+
+            <StackPanel>
+                <StackPanel.Background>Transparent</StackPanel.Background>
+                <StackPanel.VerticalAlignment>Bottom</StackPanel.VerticalAlignment>
+                <StackPanel.Orientation>Vertical</StackPanel.Orientation>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <StackPanel.FlowDirection>RightToLeft</StackPanel.FlowDirection>
+                        <StackPanel.Orientation>Vertical</StackPanel.Orientation>
+                        <TextBlock>
+                            <TextBlock.Foreground>#B4A087</TextBlock.Foreground>
+                            Version
+                        </TextBlock>
+                        <TextBlock>
+                            <TextBlock.Foreground>#B4A087</TextBlock.Foreground>
+                            0.0.0
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="0">
+                        <StackPanel.FlowDirection>RightToLeft</StackPanel.FlowDirection>
+                        <StackPanel.Orientation>Horizontal</StackPanel.Orientation>
+
+                        <Button Style="{StaticResource StartButton}" Click="Start_OnClick">
+                            <Button.Content>Spiel starten</Button.Content>
+                            <Button.Padding>10</Button.Padding>
+
+                        </Button>
+                        <Button Style="{StaticResource UpButton}" Click="Up_OnClick">
+                            <Button.Content>
+                                <Image>
+                                    <Image.Source>assets/carret_up.png</Image.Source>
+                                </Image>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Grid>
+    </DockPanel>
+
 </Window>

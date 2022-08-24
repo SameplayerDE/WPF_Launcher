@@ -10,6 +10,7 @@ namespace WpfApp2
     {
         public long LastTimeApplicationStartUpUnixTimestamp;
         public long LastTimeApplicationUpdateGameFilesUnixTimestamp;
+        public bool HasGameFiles;
         
         public static void SaveToXml(LauncherApplicationInformation launcherApplicationInformation)
         {

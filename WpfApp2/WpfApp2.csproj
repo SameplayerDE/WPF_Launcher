@@ -17,6 +17,14 @@
       <Content Include="assets\carret_up.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="assets\x_white.png" />
+      <Content Include="assets\x_white.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="assets\error.png" />
+      <Content Include="assets\error.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>
